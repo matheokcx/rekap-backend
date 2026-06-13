@@ -1,7 +1,7 @@
 opencollection: 1.0.0
 
 info:
-  name: adonis-template
+  name: rekap
 config:
   proxy:
     inherit: true
