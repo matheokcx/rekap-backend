@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-__Template de projet d'api avec Adonis v7 et Typescript v6__
+**Template de projet d'api avec Adonis v7 et Typescript v6**
 
 ---
 

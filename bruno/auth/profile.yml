@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{base-url}}/account/profile"
+  url: '{{base-url}}/account/profile'
   auth: inherit
 
 settings:
