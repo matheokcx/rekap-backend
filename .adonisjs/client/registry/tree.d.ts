@@ -23,4 +23,7 @@ export interface ApiDefinition {
       destroy: typeof routes['profile.access_tokens.destroy']
     }
   }
+  addWaitlists: {
+    add: typeof routes['add_waitlists.add']
+  }
 }
