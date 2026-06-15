@@ -67,4 +67,16 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/access_tokens_controller').default['destroy']>>>
     }
   }
+  'add_waitlists.add': {
+    methods: ["POST"]
+    pattern: '/api/add-waitlist'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/add_waitlists_controller').default['add']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/add_waitlists_controller').default['add']>>>
+    }
+  }
 }

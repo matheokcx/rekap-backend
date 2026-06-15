@@ -36,6 +36,12 @@ const routes = {
     tokens: [{"old":"/api/account/logout","type":0,"val":"api","end":""},{"old":"/api/account/logout","type":0,"val":"account","end":""},{"old":"/api/account/logout","type":0,"val":"logout","end":""}],
     types: placeholder as Registry['profile.access_tokens.destroy']['types'],
   },
+  'add_waitlists.add': {
+    methods: ["POST"],
+    pattern: '/api/add-waitlist',
+    tokens: [{"old":"/api/add-waitlist","type":0,"val":"api","end":""},{"old":"/api/add-waitlist","type":0,"val":"add-waitlist","end":""}],
+    types: placeholder as Registry['add_waitlists.add']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }
