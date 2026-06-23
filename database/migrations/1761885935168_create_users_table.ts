@@ -11,8 +11,11 @@ export default class extends BaseSchema {
       table.string('email', 254).notNullable().unique()
       table.string('password').notNullable()
       table.enum('role', Object.values(Roles)).notNullable().defaultTo(Roles.USER)
+      table.integer('agency_id').nullable().references('agencies.id').onDelete('CASCADE')
       table.timestamp('created_at').notNullable()
       table.timestamp('updated_at').nullable()
+
+      table.index('agency_id')
     })
   }
 

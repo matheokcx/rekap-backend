@@ -7,6 +7,78 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
+export class AgencySchema extends BaseModel {
+  static $columns = [
+    'brandColor',
+    'createdAt',
+    'email',
+    'id',
+    'logoPath',
+    'name',
+    'senderName',
+    'updatedAt',
+  ] as const
+  $columns = AgencySchema.$columns
+  @column()
+  declare brandColor: string | null
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column()
+  declare email: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare logoPath: string | null
+  @column()
+  declare name: string
+  @column()
+  declare senderName: string | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class AiReportSchema extends BaseModel {
+  static $columns = [
+    'approvedAt',
+    'approvedUserId',
+    'clientId',
+    'content',
+    'createdAt',
+    'id',
+    'periodEnd',
+    'periodStart',
+    'sentAt',
+    'sourceTasks',
+    'status',
+    'updatedAt',
+  ] as const
+  $columns = AiReportSchema.$columns
+  @column.dateTime()
+  declare approvedAt: DateTime | null
+  @column()
+  declare approvedUserId: number | null
+  @column()
+  declare clientId: number
+  @column()
+  declare content: any
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column.dateTime()
+  declare periodEnd: DateTime
+  @column.dateTime()
+  declare periodStart: DateTime
+  @column.dateTime()
+  declare sentAt: DateTime | null
+  @column()
+  declare sourceTasks: any
+  @column()
+  declare status: string
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
 export class AuthAccessTokenSchema extends BaseModel {
   static $columns = [
     'abilities',
@@ -43,6 +115,102 @@ export class AuthAccessTokenSchema extends BaseModel {
   declare updatedAt: DateTime | null
 }
 
+export class ClientSchema extends BaseModel {
+  static $columns = [
+    'active',
+    'agencyId',
+    'cadence',
+    'createdAt',
+    'id',
+    'name',
+    'sendDay',
+    'updatedAt',
+  ] as const
+  $columns = ClientSchema.$columns
+  @column()
+  declare active: boolean
+  @column()
+  declare agencyId: number
+  @column()
+  declare cadence: string
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare name: string
+  @column()
+  declare sendDay: number
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class IntegrationSchema extends BaseModel {
+  static $columns = [
+    'agencyId',
+    'createdAt',
+    'externalWorkspaceId',
+    'externalWorkspaceName',
+    'id',
+    'provider',
+    'status',
+    'token',
+    'tokenExpiresAt',
+    'tokenRefresh',
+    'updatedAt',
+  ] as const
+  $columns = IntegrationSchema.$columns
+  @column()
+  declare agencyId: number
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column()
+  declare externalWorkspaceId: string | null
+  @column()
+  declare externalWorkspaceName: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare provider: string
+  @column()
+  declare status: string
+  @column()
+  declare token: string
+  @column.dateTime()
+  declare tokenExpiresAt: DateTime | null
+  @column()
+  declare tokenRefresh: string | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class ProjectSchema extends BaseModel {
+  static $columns = [
+    'clientId',
+    'createdAt',
+    'externalProjectId',
+    'externalProjectName',
+    'id',
+    'integrationId',
+    'updatedAt',
+  ] as const
+  $columns = ProjectSchema.$columns
+  @column()
+  declare clientId: number
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column()
+  declare externalProjectId: string
+  @column()
+  declare externalProjectName: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare integrationId: number
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
 export class RateLimitSchema extends BaseModel {
   static $columns = ['expire', 'key', 'points'] as const
   $columns = RateLimitSchema.$columns
@@ -54,8 +222,64 @@ export class RateLimitSchema extends BaseModel {
   declare points: number
 }
 
+export class RecipientSchema extends BaseModel {
+  static $columns = ['active', 'clientId', 'createdAt', 'email', 'id', 'name', 'updatedAt'] as const
+  $columns = RecipientSchema.$columns
+  @column()
+  declare active: boolean
+  @column()
+  declare clientId: number
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column()
+  declare email: string
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare name: string | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class SubscriptionSchema extends BaseModel {
+  static $columns = [
+    'createdAt',
+    'currentPeriodEnd',
+    'id',
+    'plan',
+    'status',
+    'stripeCustomerId',
+    'stripePriceId',
+    'stripeSubscriptionId',
+    'updatedAt',
+    'userId',
+  ] as const
+  $columns = SubscriptionSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column.dateTime()
+  declare currentPeriodEnd: DateTime | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare plan: string
+  @column()
+  declare status: string
+  @column()
+  declare stripeCustomerId: number | null
+  @column()
+  declare stripePriceId: number | null
+  @column()
+  declare stripeSubscriptionId: number | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare userId: number
+}
+
 export class UserSchema extends BaseModel {
   static $columns = [
+    'agencyId',
     'createdAt',
     'email',
     'fullName',
@@ -65,6 +289,8 @@ export class UserSchema extends BaseModel {
     'updatedAt',
   ] as const
   $columns = UserSchema.$columns
+  @column()
+  declare agencyId: number | null
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
   @column()
