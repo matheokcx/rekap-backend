@@ -10,5 +10,5 @@ export default class Client extends ClientSchema {
   @belongsTo(() => Agency) declare agency: BelongsTo<typeof Agency>
   @hasMany(() => Recipient) declare recipients: HasMany<typeof Recipient>
   @hasMany(() => Project) declare projects: HasMany<typeof Project>
-  @hasMany(() => AiReport) declare updates: HasMany<typeof AiReport>
+  @hasMany(() => AiReport) declare reports: HasMany<typeof AiReport>
 }
