@@ -23,6 +23,15 @@ export interface ApiDefinition {
       destroy: typeof routes['profile.access_tokens.destroy']
     }
   }
+  agencies: {
+    index: typeof routes['agencies.index']
+    create: typeof routes['agencies.create']
+    store: typeof routes['agencies.store']
+    show: typeof routes['agencies.show']
+    edit: typeof routes['agencies.edit']
+    update: typeof routes['agencies.update']
+    destroy: typeof routes['agencies.destroy']
+  }
   addWaitlists: {
     add: typeof routes['add_waitlists.add']
   }

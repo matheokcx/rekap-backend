@@ -6,6 +6,7 @@
 export const controllers = {
   AccessTokens: () => import('#controllers/access_tokens_controller'),
   AddWaitlists: () => import('#controllers/add_waitlists_controller'),
+  Agencies: () => import('#controllers/agencies_controller'),
   NewAccount: () => import('#controllers/new_account_controller'),
   Profile: () => import('#controllers/profile_controller'),
 }

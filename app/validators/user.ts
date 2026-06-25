@@ -1,4 +1,5 @@
 import vine from '@vinejs/vine'
+import { Plans } from '../enums/plans_enum.js'
 
 /**
  * Shared rules for email and password.
@@ -16,6 +17,7 @@ export const signupValidator = vine.create({
     .minLength(8)
     .regex(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/),
   passwordConfirmation: password().sameAs('password'),
+  plan: vine.enum(Plans),
 })
 
 /**

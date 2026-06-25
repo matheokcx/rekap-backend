@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: '{{base-url}}/auth/signup'
+  url: "{{base-url}}/auth/signup"
   body:
     type: json
     data: |
@@ -13,7 +13,8 @@ http:
         "fullName": "Deleplanque Mathéo",
         "email": "{{email}}",
         "password": "{{password}}",
-        "passwordConfirmation": "{{password}}"
+        "passwordConfirmation": "{{password}}",
+        "plan": "pro"
       }
 
 runtime:

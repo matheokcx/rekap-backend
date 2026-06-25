@@ -1,0 +1,35 @@
+info:
+  name: createAgency
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base-url}}/agencies"
+  body:
+    type: multipart-form
+    data:
+      - name: name
+        type: text
+        value: Agence de test
+      - name: logo
+        type: file
+        value:
+          - /Users/matheodeleplanque/Downloads/ChatGPT Image 23 juin 2026, 00_30_31.png
+        contentType: image/png
+      - name: brandColor
+        type: text
+        value: "#ff0000"
+      - name: senderName
+        type: text
+        value: Mathéo
+      - name: email
+        type: text
+        value: matheo.deleplanque@gmail.com
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

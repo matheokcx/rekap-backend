@@ -32,6 +32,12 @@ router
       .as('profile')
       .use(middleware.auth())
 
+    router
+      .group(() => {
+        router.resource('agencies', controllers.Agencies)
+      })
+      .use(middleware.auth())
+
     router.post('add-waitlist', [controllers.AddWaitlists, 'add'])
   })
   .prefix('/api')

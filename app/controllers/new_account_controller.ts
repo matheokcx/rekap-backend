@@ -1,22 +1,19 @@
-import User from '#models/user'
 import { signupValidator } from '#validators/user'
 import type { HttpContext } from '@adonisjs/core/http'
 import UserTransformer from '#transformers/user_transformer'
-import mail from '@adonisjs/mail/services/main'
-import SignupConfirmationNotification from '#mails/signup_confirmation_notification'
+import { AuthService } from '#services/auth_service'
+import { inject } from '@adonisjs/core'
 
 export default class NewAccountController {
-  async store({ request, serialize }: HttpContext) {
-    const { fullName, email, password } = await request.validateUsing(signupValidator)
+  @inject()
+  async store({ request, serialize }: HttpContext, authService: AuthService) {
+    const { fullName, email, password, plan } = await request.validateUsing(signupValidator)
 
-    const user = await User.create({ fullName, email, password })
-    const token = await User.accessTokens.create(user)
-
-    await mail.sendLater(new SignupConfirmationNotification(user))
+    const result = await authService.createUserAccount(fullName, email, password, plan)
 
     return serialize({
-      user: UserTransformer.transform(user),
-      token: token.value!.release(),
+      user: UserTransformer.transform(result.user),
+      token: result.token.value!.release(),
     })
   }
 }

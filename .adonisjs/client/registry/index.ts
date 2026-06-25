@@ -36,6 +36,48 @@ const routes = {
     tokens: [{"old":"/api/account/logout","type":0,"val":"api","end":""},{"old":"/api/account/logout","type":0,"val":"account","end":""},{"old":"/api/account/logout","type":0,"val":"logout","end":""}],
     types: placeholder as Registry['profile.access_tokens.destroy']['types'],
   },
+  'agencies.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/api/agencies',
+    tokens: [{"old":"/api/agencies","type":0,"val":"api","end":""},{"old":"/api/agencies","type":0,"val":"agencies","end":""}],
+    types: placeholder as Registry['agencies.index']['types'],
+  },
+  'agencies.create': {
+    methods: ["GET","HEAD"],
+    pattern: '/api/agencies/create',
+    tokens: [{"old":"/api/agencies/create","type":0,"val":"api","end":""},{"old":"/api/agencies/create","type":0,"val":"agencies","end":""},{"old":"/api/agencies/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['agencies.create']['types'],
+  },
+  'agencies.store': {
+    methods: ["POST"],
+    pattern: '/api/agencies',
+    tokens: [{"old":"/api/agencies","type":0,"val":"api","end":""},{"old":"/api/agencies","type":0,"val":"agencies","end":""}],
+    types: placeholder as Registry['agencies.store']['types'],
+  },
+  'agencies.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/api/agencies/:id',
+    tokens: [{"old":"/api/agencies/:id","type":0,"val":"api","end":""},{"old":"/api/agencies/:id","type":0,"val":"agencies","end":""},{"old":"/api/agencies/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['agencies.show']['types'],
+  },
+  'agencies.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/api/agencies/:id/edit',
+    tokens: [{"old":"/api/agencies/:id/edit","type":0,"val":"api","end":""},{"old":"/api/agencies/:id/edit","type":0,"val":"agencies","end":""},{"old":"/api/agencies/:id/edit","type":1,"val":"id","end":""},{"old":"/api/agencies/:id/edit","type":0,"val":"edit","end":""}],
+    types: placeholder as Registry['agencies.edit']['types'],
+  },
+  'agencies.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/api/agencies/:id',
+    tokens: [{"old":"/api/agencies/:id","type":0,"val":"api","end":""},{"old":"/api/agencies/:id","type":0,"val":"agencies","end":""},{"old":"/api/agencies/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['agencies.update']['types'],
+  },
+  'agencies.destroy': {
+    methods: ["DELETE"],
+    pattern: '/api/agencies/:id',
+    tokens: [{"old":"/api/agencies/:id","type":0,"val":"api","end":""},{"old":"/api/agencies/:id","type":0,"val":"agencies","end":""},{"old":"/api/agencies/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['agencies.destroy']['types'],
+  },
   'add_waitlists.add': {
     methods: ["POST"],
     pattern: '/api/add-waitlist',
